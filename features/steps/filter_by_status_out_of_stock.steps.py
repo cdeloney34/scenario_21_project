@@ -10,6 +10,7 @@ from time import sleep
 @given('Open Reely main page')
 def open_reely_main_page(context):
     context.add.reely_main_page.open_reely_main_page()
+    sleep(10)
 
 @when('Log in to the page')
 def log_in_to_the_page(context):
@@ -20,6 +21,7 @@ def log_in_to_the_page(context):
 @then('Verify the right page opens.')
 def verify_right_page_open(context):
     context.add.reely_totalprojects_page.verify_right_page_open()
+
 
 
 @when('Filter by status of "Out of Stock".')
