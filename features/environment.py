@@ -7,40 +7,53 @@ from selenium.webdriver.support.wait import WebDriverWait
 from add.application import Application
 
 
-def browser_init(context):
+def browser_init(context, scenario_name):
     """
     :param context: Behave context
     """
-    #driver_path = ChromeDriverManager().install()
-    #service = Service(driver_path)
-    #context.driver = webdriver.Chrome(service=service)
+    # driver_path = ChromeDriverManager().install()
+    # service = Service(driver_path)
+    # context.driver = webdriver.Chrome(service=service)
 
-    driver_path = GeckoDriverManager().install()
-    service = Service(driver_path)
-    context.driver = webdriver.Firefox(service=service)
+    # context.driver.set_window_size(2560, 1440)
+
+    # driver_path = GeckoDriverManager().install()
+    # driver_path = './geckodriver.exe'
+    # service = Service(driver_path)
+    # context.driver = webdriver.Firefox(service=service)
 
     ### browser With Drivers: provide path to driver file
-    #service = Service(executable_path='C:/Users/cedri/Downloads/internship-project/geckodriver.exe')
-    #context.driver = webdriver.Firefox(service=service)
-
+    # service = Service(executable_path='C:/Users/cedri/Downloads/internship-project/geckodriver.exe')
+    # context.driver = webdriver.Firefox(service=service)
 
     ### SAFARFI ###
-   # context.driver = webdriver.Safari()
-
+    # context.driver = webdriver.Safari()
 
     ### HEADLESS MODE ###
-    #options = webdriver.ChromeOptions()
-    #options.add_argument('headless')
-    #service = Service(ChromeDriverManager().install())
-    #context.driver = webdriver.Chrome(
-        #options=options,
-        #service=service
-    #)
+    # options = webdriver.ChromeOptions()
+    # options.add_argument('headless')
+    # service = Service(ChromeDriverManager().install())
+    # context.driver = webdriver.Chrome(
+    # options=options,
+    # service=service
+    # )
 
+    # Browserstack
+    # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
+    bs_user = 'cedricdeloney_MEl0B9'
+    bs_key = 'nB5DGTNRygoG3hm4bKxN'
+    url = f'https://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
 
+    options = Options()
+    bstack_options = {
+        'os': 'Windows',
+        'osVersion': '10',
+        'browserName': 'Chrome',
+        'sessionName': scenario_name
+    }
 
-
-
+    options.set_capability('bstack:options', bstack_options)
+    context.driver = webdriver.Remote(command_executor=url, options=options)
 
     context.driver.maximize_window()
 
@@ -51,7 +64,7 @@ def browser_init(context):
 
 def before_scenario(context, scenario):
     print('\nStarted scenario: ', scenario.name)
-    browser_init(context)
+    browser_init(context, scenario.name)
 
 
 def before_step(context, step):
