@@ -7,56 +7,59 @@ from selenium.webdriver.support.wait import WebDriverWait
 from add.application import Application
 
 
+# Run Behave tests with Allure results
+# behave -f allure_behave.formatter:AllureFormatter -o test_results/ features/tests/
+
 def browser_init(context, scenario_name):
     """
     :param context: Behave context
     """
-    # driver_path = ChromeDriverManager().install()
-    # service = Service(driver_path)
-    # context.driver = webdriver.Chrome(service=service)
+    driver_path = ChromeDriverManager().install()
+    service = Service(driver_path)
+    context.driver = webdriver.Chrome(service=service)
 
-    # context.driver.set_window_size(2560, 1440)
 
-    # driver_path = GeckoDriverManager().install()
-    # driver_path = './geckodriver.exe'
-    # service = Service(driver_path)
-    # context.driver = webdriver.Firefox(service=service)
+# context.driver.set_window_size(2560, 1440)
 
-    ### browser With Drivers: provide path to driver file
-    # service = Service(executable_path='C:/Users/cedri/Downloads/internship-project/geckodriver.exe')
-    # context.driver = webdriver.Firefox(service=service)
+# driver_path = GeckoDriverManager().install()
+# driver_path = './geckodriver.exe'
+# service = Service(driver_path)
+# context.driver = webdriver.Firefox(service=service)
 
-    ### SAFARFI ###
-    # context.driver = webdriver.Safari()
+### browser With Drivers: provide path to driver file
+# service = Service(executable_path='C:/Users/cedri/Downloads/internship-project/geckodriver.exe')
+# context.driver = webdriver.Firefox(service=service)
 
-    ### HEADLESS MODE ###
-    # options = webdriver.ChromeOptions()
-    # options.add_argument('headless')
-    # service = Service(ChromeDriverManager().install())
-    # context.driver = webdriver.Chrome(
-    # options=options,
-    # service=service
-    # )
+### SAFARFI ###
+# context.driver = webdriver.Safari()
 
-    # Browserstack
-    # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
-    bs_user = 'cedricdeloney_MEl0B9'
-    bs_key = 'nB5DGTNRygoG3hm4bKxN'
-    url = f'https://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+### HEADLESS MODE ###
+# options = webdriver.ChromeOptions()
+# options.add_argument('headless')
+# service = Service(ChromeDriverManager().install())
+# context.driver = webdriver.Chrome(
+# options=options,
+# service=service
+# )
 
-    options = Options()
-    bstack_options = {
-        'os': 'Windows',
-        'osVersion': '10',
-        'browserName': 'Chrome',
-        'sessionName': scenario_name
-    }
+# Browserstack
+# Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
+# bs_user = 'cedricdeloney_MEl0B9'
+# bs_key = 'nB5DGTNRygoG3hm4bKxN'
+# url = f'https://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
 
-    options.set_capability('bstack:options', bstack_options)
-    context.driver = webdriver.Remote(command_executor=url, options=options)
+# options = Options()
+# bstack_options = {
+# 'os': 'Windows',
+# 'osVersion': '10',
+# 'browserName': 'Chrome',
+# 'sessionName': scenario_name
+# }
+
+# options.set_capability('bstack:options', bstack_options)
+# context.driver = webdriver.Remote(command_executor=url, options=options)
 
     context.driver.maximize_window()
-
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
     context.add = Application(context.driver)
