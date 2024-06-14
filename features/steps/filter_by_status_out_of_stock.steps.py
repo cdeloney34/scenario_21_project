@@ -26,7 +26,7 @@ def verify_right_page_open(context):
 
 @when('Filter by status of "Out of Stock".')
 def filter_by_out_of_stock_status(context):
-    context.add.reely_totalprojects_page.filter_by_out_of_stock_status()
+    context.add.reely_totalprojects_page.mobile_filter_by_out_of_stock_status()
     sleep(10)
 
 @then('Verify each product contains the Out of Stock tag')

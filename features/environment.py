@@ -14,9 +14,9 @@ def browser_init(context, scenario_name):
     """
     :param context: Behave context
     """
-    driver_path = ChromeDriverManager().install()
-    service = Service(driver_path)
-    context.driver = webdriver.Chrome(service=service)
+    #driver_path = ChromeDriverManager().install()
+    #service = Service(driver_path)
+    #context.driver = webdriver.Chrome(service=service)
 
 
 # context.driver.set_window_size(2560, 1440)
@@ -59,10 +59,22 @@ def browser_init(context, scenario_name):
 # options.set_capability('bstack:options', bstack_options)
 # context.driver = webdriver.Remote(command_executor=url, options=options)
 
+    mobile_emulation = {
+        "deviceMetrics": {"width": 415, "height": 896, "pixelRatio": 3.0},
+        "userAgent": "Mozilla/5.0 (iPhone; CPU iphone OS 12_1_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1",
+        "clientHints": {"platform": "iPhone", "mobile": True}}
+    chrome_options = Options()
+    chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+    context.driver = webdriver.Chrome(options=chrome_options)
+
+
     context.driver.maximize_window()
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
     context.add = Application(context.driver)
+
+
+
 
 
 def before_scenario(context, scenario):
