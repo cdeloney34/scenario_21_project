@@ -18,3 +18,12 @@ Feature: Test case scenerios for Reelly website
       When Go back to the first page using the pagination button
 
 
+    Scenario: User can filter the Secondary deals by “want to sell” option
+      Given  Open main page
+      When Log in to the webpage
+      When Click secondary option at the left side menu page
+      When Verify the right page open
+      When Click on filters
+      When Filter the products by want to sell
+      When Click on Apply filter
+      Then Verify all cards have for sale tag

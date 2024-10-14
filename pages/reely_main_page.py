@@ -32,6 +32,26 @@ class ReelyMainPage(Page):
         self.click(*self.secondary_page_button)
         sleep(10)
 
+    def open_reely_main_page(self):
+        self.open('https://soft.reelly.io/sign-in')
+        sleep(10)
+
+
+    def log_in_to_webpage(self):
+        self.input_text('cedricdeloney@gmail.com', *self.type_username)
+        self.input_text('Goodtech1', *self.type_password)
+        self.click(*self.reely_signin_button)
+        sleep(10)
+
+    def click_secondary_option_menu_page(self):
+        self.click(*self.secondary_page_button)
+        sleep(10)
+
+
+
+
+
+
 
 
 
