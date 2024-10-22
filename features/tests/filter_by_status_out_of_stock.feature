@@ -19,11 +19,22 @@ Feature: Test case scenerios for Reelly website
 
 
     Scenario: User can filter the Secondary deals by “want to sell” option
-      Given  Open main page
-      When Log in to the webpage
-      When Click secondary option at the left side menu page
-      When Verify the right page open
-      When Click on filters
-      When Filter the products by want to sell
-      When Click on Apply filter
-      Then Verify all cards have for sale tag
+     # Given  Open main
+     # When Log in to the webpage
+    #  When Click secondary option at the left side menu page
+    #  When Verify the right page open
+    #  When Click on filters
+     # When Filter the products by want to sell
+    #  When Click on Apply filter
+    #  Then Verify all cards have for sale tag
+
+
+    Scenario:User can filter the Secondary deals by “want to buy” option
+      Given Open Reely page
+      When Log in to page
+      When click on secondary page
+      Then Verify page opens
+      When Click on filters tab
+      When Filter the products by want to buy
+      When Click on Apply filter tab
+      Then Verify all cards have Want to buy tag

@@ -10,8 +10,10 @@ class ReelySecondaryPage(Page):
     pagination_previous_button = (By.XPATH,"//*[@wized='previousPageMLS']")
     filter_button = (By.XPATH,"//*[@class='filter-button']")
     want_to_sell_button = (By.XPATH,"//*[@wized='ListingTypeSell']")
+    want_to_buy_button = (By.XPATH,"//*[@wized='ListingTypeBuy']")
     appy_filter_button = (By.XPATH,"//*[@wized='applyFilterButtonMLS']")
     for_sale_tag =(By.XPATH,"//*[@wized='saleTagMLS']")
+    to_buy_tag = (By.XPATH,"//*[@wized='saleTagBoxMLS']")
 
 
     def verify_secondary_page_opens(self):
@@ -83,6 +85,44 @@ class ReelySecondaryPage(Page):
                 return
 
         print("All tags are 'For sale'.")
+
+    def verify_page_opens(self):
+        actual_text = self.find_element(*self.verify_secondary_pg).text
+        expected_text = "Secondary"
+        assert expected_text in actual_text, f'Error! Text {expected_text} is not in {actual_text}'
+        sleep(10)
+
+    def click_filters_tab(self):
+        self.click(*self.filter_button)
+        sleep(10)
+
+
+    def filter_by_want_to_buy(self):
+        self.click(*self.want_to_buy_button)
+
+    def apply_filter_tab(self):
+        self.click(*self.filter_button)
+        sleep(10)
+
+    def verify_all_cards_have_want_to_buy_tag(self):
+        tags = self.find_elements(*self.to_buy_tag)
+
+        for tag in tags:
+            tag_text = tag.text
+
+            if tag_text != "want to buy":
+                print(f"Tag '{tag_text}' is not in 'Want to Buy'.")
+                return
+
+            print("All tags are 'Want to buy'")
+
+
+
+
+
+
+
+
 
 
 
