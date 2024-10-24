@@ -38,3 +38,13 @@ Feature: Test case scenerios for Reelly website
       When Filter the products by want to buy
       When Click on Apply filter tab
       Then Verify all cards have Want to buy tag
+
+
+      Scenario: Scenario 16: User can filter the Secondary deals by Unit price range
+        Given open webpage
+        When log into webpage
+        When click on secondary webpage
+        Then Verify Webpage
+        When click on filter tab
+        When Filter the products by price range from 1200000 to 2000000 AED
+        Then Verify the price in all cards is inside the range (1200000 - 2000000)

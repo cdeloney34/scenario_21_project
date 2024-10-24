@@ -14,6 +14,9 @@ class ReelySecondaryPage(Page):
     appy_filter_button = (By.XPATH,"//*[@wized='applyFilterButtonMLS']")
     for_sale_tag =(By.XPATH,"//*[@wized='saleTagMLS']")
     to_buy_tag = (By.XPATH,"//*[@wized='saleTagBoxMLS']")
+    unit_price_from_tab = (By.XPATH,"//*[@wized='unitPriceFromFilter']")
+    unit_price_to_tab = (By.XPATH,"//*[@wized='unitPriceToFilter']")
+    unit_price_verification = (By.XPATH,"//*[@wized='unitPriceMLS']")
 
 
     def verify_secondary_page_opens(self):
@@ -116,9 +119,35 @@ class ReelySecondaryPage(Page):
 
             print("All tags are 'Want to buy'")
 
+    def verify_webpage(self):
+        actual_text = self.find_element(*self.verify_secondary_pg).text
+        expected_text = "Secondary"
+        assert expected_text in actual_text, f'Error! Text {expected_text} is not in {actual_text}'
+        sleep(10)
+
+    def click_on_filter_tab(self):
+        self.click(*self.filter_button)
+        sleep(10)
+
+    def click_on_filter_products_by_price_range(self):
+        self.input_text('1200000',*self.unit_price_from_tab)
+        self.input_text('2000000',*self.unit_price_to_tab)
+        self.click(*self.appy_filter_button)
 
 
+    def verify_all_cards_inside_range(self):
+        numbers = self.find_elements(*self.unit_price_verification)
 
+        for number in numbers:
+            price_text = number.text
+            if price_text.isdigit():
+                price = int(price_text)  # Convert to integer
+                if 1200000 <= price <= 2000000:
+                    print(f"Number {price} falls in range.")
+                else:
+                    print(f'Number {price} is not in range.')
+            else:
+                print(f'Invalid price format: {price_text}')
 
 
 
