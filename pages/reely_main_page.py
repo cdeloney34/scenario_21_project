@@ -7,7 +7,7 @@ class ReelyMainPage(Page):
     type_password = (By.XPATH,"//*[@type='password']")
     reely_signin_button = (By.XPATH,"//a[@wized='loginButton']")
     secondary_page_button = (By.XPATH,"//*[@id='w-node-_99a5c496-8f77-9959-16dd-e8eb9b22b697-9b22b68b']")
-
+    off_plan_page_button = (By.XPATH,"//*[@class='_1-link-menu w-inline-block w--current']")
     def open_reely_main_page(self):
         self.open('https://soft.reelly.io/sign-in')
         sleep(10)
@@ -75,6 +75,23 @@ class ReelyMainPage(Page):
     def click_on_secondary_webpage(self):
         self.click(*self.secondary_page_button)
         sleep(10)
+
+    def open_page(self):
+        self.open('https://soft.reelly.io/sign-in')
+        sleep(10)
+
+    def login_to_main_page(self):
+        self.input_text('cedricdeloney@gmail.com', *self.type_username)
+        self.input_text('Goodtech1', *self.type_password)
+        self.click(*self.reely_signin_button)
+        sleep(10)
+
+    def click_off_plan_option(self):
+        self.click(*self.off_plan_page_button)
+        sleep(10)
+
+
+
 
 
 

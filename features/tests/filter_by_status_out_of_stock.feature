@@ -48,3 +48,11 @@ Feature: Test case scenerios for Reelly website
         When click on filter tab
         When Filter the products by price range from 1200000 to 2000000 AED
         Then Verify the price in all cards is inside the range (1200000 - 2000000)
+
+      Scenario: Scenario 17: User can open the off plan page and go through the pagination
+        Given open page
+        When Log in to main page
+        When Click on off plan option
+        Then Verify off plan page open
+        When Go to the final page using the pagination
+        When Go back to the first page using the pagination
