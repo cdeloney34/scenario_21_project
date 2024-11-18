@@ -90,6 +90,23 @@ class ReelyMainPage(Page):
         self.click(*self.off_plan_page_button)
         sleep(10)
 
+    def Open_reely(self):
+        self.open('https://soft.reelly.io/sign-in')
+        sleep(10)
+
+    def Log_in_to_Reely(self):
+        self.input_text('cedricdeloney@gmail.com', *self.type_username)
+        self.input_text('Goodtech1', *self.type_password)
+        self.click(*self.reely_signin_button)
+        sleep(10)
+
+    def Click_on_off_plan_tab(self):
+        self.click(*self.off_plan_page_button)
+        sleep(10)
+
+
+
+
 
 
 

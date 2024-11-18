@@ -56,3 +56,12 @@ Feature: Test case scenerios for Reelly website
         Then Verify off plan page open
         When Go to the final page using the pagination
         When Go back to the first page using the pagination
+
+
+      Scenario: Scenario 18 User can filter the off plan products by Unit price range
+        Given Open Reely
+        When Log in to Reely
+        When Click on off plan tab
+        Then Verify off plan page
+        When Filter the products by price range from 1200000 to 2000000 AED.
+        Then Verify the price in all cards is inside the range (1200000 - 2000000).
