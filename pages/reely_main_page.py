@@ -104,6 +104,60 @@ class ReelyMainPage(Page):
         self.click(*self.off_plan_page_button)
         sleep(10)
 
+    def open_reely_pg(self):
+        self.open('https://soft.reelly.io/sign-in')
+        sleep(10)
+
+    def log_into_Reely(self):
+        self.input_text('cedricdeloney@gmail.com', *self.type_username)
+        self.input_text('Goodtech1', *self.type_password)
+        self.click(*self.reely_signin_button)
+        sleep(10)
+
+    def click_off_plan_tab(self):
+        self.click(*self.off_plan_page_button)
+        sleep(10)
+
+    def open_reely_io_pg(self):
+        self.open('https://soft.reelly.io/sign-in')
+        sleep(10)
+
+    def log_into_reely_pg(self):
+        self.input_text('cedricdeloney@gmail.com', *self.type_username)
+        self.input_text('Goodtech1', *self.type_password)
+        self.click(*self.reely_signin_button)
+        sleep(10)
+
+    def go_to_offplan_page(self):
+        self.click(*self.off_plan_page_button)
+        sleep(10)
+
+    def open_reely_io(self):
+        self.open('https://soft.reelly.io/sign-in')
+        sleep(10)
+
+    def login_to_reely_io(self):
+        self.input_text('cedricdeloney@gmail.com', *self.type_username)
+        self.input_text('Goodtech1', *self.type_password)
+        self.click(*self.reely_signin_button)
+        sleep(10)
+
+    def click_offplan(self):
+        self.click(*self.off_plan_page_button)
+        sleep(10)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

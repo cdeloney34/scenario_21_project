@@ -65,3 +65,30 @@ Feature: Test case scenerios for Reelly website
         Then Verify off plan page
         When Filter the products by price range from 1200000 to 2000000 AED.
         Then Verify the price in all cards is inside the range (1200000 - 2000000).
+
+
+      Scenario: Scenario 19 User can see titles and pictures on each product inside the off plan page
+        Given open reely pg
+        When log into Reely
+        When click off plan tab
+        Then verify off plan opens
+        Then Verify each product on this page contains a title and picture visible
+
+
+      Scenario: Scenario 20 User can filter by sale status Out of Stocks
+        Given Open reely.io pg
+        When Log into Reely pg
+        When go to offplan page
+        Then Verify offplan page
+        When click filters
+        When Filter by status of out-of-stock
+        Then Verify each product contains the out of stock tab
+
+
+        Scenario: Scenario 21  User can open product detail and see three options of visualization
+          Given open reely.io
+          When login to reel.io
+          When click on offplan
+          When click on the first product
+          Then verify the two options of visualizations are architecture, interior
+          Then verify the visualization options are clickable
